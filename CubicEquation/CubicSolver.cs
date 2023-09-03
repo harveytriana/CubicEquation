@@ -13,7 +13,7 @@ namespace CubicEquation
 
         public Complex[] Solve(double a, double b, double c, double d)
         {
-            if (a == 0) {
+            if(a == 0) {
                 return null;
             }
             // constants
@@ -25,17 +25,17 @@ namespace CubicEquation
             double t = q * q / 4.0 + p * p * p / 27.0;
 
             // force to zero if it is very close to zero
-            if (Math.Abs(t) < CLOSETOZERO) {
+            if(Math.Abs(t) < CLOSETOZERO) {
                 t = 0;
             }
-            if (Math.Abs(q) < CLOSETOZERO) {
+            if(Math.Abs(q) < CLOSETOZERO) {
                 q = 0;
             }
 
             double r1 = 0, r2 = 0, r3 = 0, i1 = 0, i2 = 0, i3 = 0, i;
 
             // There are three cases according to the value of t
-            if (t > 0) {// one real, two complexs
+            if(t > 0) {// one real, two complexs
                 // real root
                 r1 = CubeRoot(-q / 2.0 + Math.Sqrt(t))
                    + CubeRoot(-q / 2.0 - Math.Sqrt(t));
@@ -43,25 +43,26 @@ namespace CubicEquation
                 r2 = -r1 / 2.0;
                 r3 = r2; // conjugated
                 // imaginary
-                if (q == 0) {
+                if(q == 0) {
                     i = Math.Sqrt(k);
-                } else {
+                }
+                else {
                     i = Math.Sqrt(Math.Abs(Math.Pow(r1 / 2.0, 2.0) + q / r1));
                 }
                 i1 = 0;
                 i2 = i;
                 i3 = -i;
             }
-            if (t == 0) {// three real roots, at least two equal
+            if(t == 0) {// three real roots, at least two equal
                 r1 = 2.0 * CubeRoot(-q / 2.0);
                 r2 = -r1 / 2.0 + Math.Sqrt(Math.Pow(r1 / 2.0, 2.0) + q / r1);
                 r3 = -r1 / 2.0 - Math.Sqrt(Math.Pow(r1 / 2.0, 2.0) + q / r1);
             }
-            if (t < 0) {// three real roots
+            if(t < 0) {// three real roots
                 var x = -q / 2.0;
                 var y = Math.Sqrt(-t); // make t positive
                 var angle = Math.Atan(y / x);
-                if (q > 0) {// if q > 0 the angle becomes 2 * PI - angle
+                if(q > 0) {// if q > 0 the angle becomes 2 * PI - angle
                     angle = Math.PI - angle;
                 }
                 r1 = 2.0 * Math.Sqrt(-p / 3.0) * Math.Cos(angle / 3.0);
@@ -76,6 +77,11 @@ namespace CubicEquation
             return result;
         }
 
-        double CubeRoot(double number) => number < 0 ? -Math.Pow(-number, THIRD) : Math.Pow(number, THIRD);
+        //
+        // Summary:
+        //     n^(1/3) - work around a negative double raised to (1/3)
+        double CubeRoot(double n) => Math.Pow(Math.Abs(n), THIRD) * Math.Sign(n);
+        // first approach
+        //double CubeRoot(double number) => number < 0 ? -Math.Pow(-number, THIRD) : Math.Pow(number, THIRD);
     }
 }
