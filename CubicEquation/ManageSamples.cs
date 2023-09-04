@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -51,8 +52,17 @@ namespace CubicEquation
     }
     public class SimplyComplex
     {
-        public double R { get; set; }
-        public double I { get; set; }
+        double real;
+        public double R {
+            get => real;
+            set => real = Math.Round(value, 6);
+        }
+
+        double imag;
+        public double I {
+            get => imag;
+            set => imag = Math.Round(value, 6);
+        }
     }
 }
 
