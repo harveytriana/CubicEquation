@@ -8,6 +8,7 @@
 //! https://www.calculatorsoup.com/calculators/algebra/cubicequation.php
 
 using System;
+using System.Linq;
 using System.Numerics;
 using System.Windows.Forms;
 
@@ -19,6 +20,8 @@ namespace CubicEquation
 
         Complex[] _roots;
 
+        readonly ManageSamples manageSamples;
+
         public FormMain()
         {
             InitializeComponent();
@@ -27,49 +30,53 @@ namespace CubicEquation
             buttonValidate.Click += (s, e) => ValidateResult();
 
             // samples
-            // SampleInput(-1, -6, 11, 72);  // All real
-            // SampleInput(1, -2, -1, 2);    // All real
-            // SampleInput(25, 15, -9, 1);   // some article
-            // SampleInput(2, 5, 4, 1);      // case 1, t = 0
-            // SampleInput(1, 2, -1, -2);    // case 3, t < 0
-            // SampleInput(1, 2, 1, 2);      // case 2, t > 0
-            // SampleInput(1, 2, 3, 4);
-            SampleInput(-1, 3, -4, 2);
+            // SampleData(-1, -6, 11, 72);  // All real
+            // SampleData(1, -2, -1, 2);    // All real
+            // SampleData(25, 15, -9, 1);   // some article
+            // SampleData(2, 5, 4, 1);      // case 1, t = 0
+            // SampleData(1, 2, -1, -2);    // case 3, t < 0
+            // SampleData(1, 2, 1, 2);      // case 2, t > 0
+            // SampleData(1, 2, 3, 4);
+
+            manageSamples = new ManageSamples();
+
+            if(manageSamples.Samples.Any()) {
+                var s = manageSamples.Samples.Last();
+                SampleData(s.A, s.B, s.C, s.D);
+            }
+            else {
+                SampleData(1, 2, 3, 4);
+            }
         }
 
         private void Execute()
         {
+            X1 = "";
+            X2 = "";
+            X3 = "";
+            // 
             _roots = _cubicSolver.Solve(A, B, C, D);
             if(_roots != null) {
                 X1 = ComplexString(_roots[0]);
                 X2 = ComplexString(_roots[1]);
                 X3 = ComplexString(_roots[2]);
+                //
+                manageSamples.SaveSample(A, B, C, D, _roots[0], _roots[1], _roots[2]);
             }
             else {
                 X1 = "null";
                 X2 = "null";
                 X3 = "null";
             }
+            buttonValidate.Enabled = string.IsNullOrEmpty(X1) == false;
         }
 
-        private void SampleInput(double a, double b, double c, double d)
+        private void SampleData(double a, double b, double c, double d)
         {
             A = a;
             B = b;
             C = c;
             D = d;
-        }
-
-        private bool ContainsNumber(string text)
-        {
-            if(!string.IsNullOrEmpty(text)) {
-                foreach(var n in new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "9" }) {
-                    if(text.Contains(n)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
 
         double A {
@@ -121,19 +128,14 @@ namespace CubicEquation
         void ValidateResult()
         {
             var s = string.Empty;
-            if(ContainsNumber(X1) && ContainsNumber(X2) && ContainsNumber(X3)) {
-                var a = A;
-                var b = B;
-                var c = C;
-                var d = D;
-                s += "Is ƒ(x) equals to zero?";
-                s += $"\nƒ({X1}) = {Test(a, b, c, d, _roots[0])}";
-                s += $"\nƒ({X2}) = {Test(a, b, c, d, _roots[1])}";
-                s += $"\nƒ({X3}) = {Test(a, b, c, d, _roots[2])}";
-            }
-            else {
-                s = "Missing result";
-            }
+            var a = A;
+            var b = B;
+            var c = C;
+            var d = D;
+            s += "Is ƒ(x) equals to zero?";
+            s += $"\nƒ({X1}) = {Test(a, b, c, d, _roots[0])}";
+            s += $"\nƒ({X2}) = {Test(a, b, c, d, _roots[1])}";
+            s += $"\nƒ({X3}) = {Test(a, b, c, d, _roots[2])}";
             MessageBox.Show(s);
         }
 

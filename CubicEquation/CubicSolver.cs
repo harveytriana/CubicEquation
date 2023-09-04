@@ -1,5 +1,5 @@
 ﻿// ================================================
-// Harvey Triana / Visionary-SAS
+// Ing. Harvey Triana / Visionary-SAS
 // Cubic equation solver by Cardano´s method
 // ================================================
 using System;
@@ -43,12 +43,9 @@ namespace CubicEquation
                 r2 = -r1 / 2.0;
                 r3 = r2; // conjugated
                 // imaginary
-                if(q == 0) {
-                    i = Math.Sqrt(k);
-                }
-                else {
-                    i = Math.Sqrt(Math.Abs(Math.Pow(r1 / 2.0, 2.0) + q / r1));
-                }
+                var q1 = CubeRoot(-q / 2.0 + Math.Sqrt(t));
+                var q2 = CubeRoot(-q / 2.0 - Math.Sqrt(t));
+                i = Math.Sqrt(3.0) / 2.0 * (q1 - q2);
                 i1 = 0;
                 i2 = i;
                 i3 = -i;
@@ -77,10 +74,9 @@ namespace CubicEquation
             return result;
         }
 
-        //
         // Summary:
-        //     n^(1/3) - work around a negative double raised to (1/3)
-        double CubeRoot(double n) => Math.Pow(Math.Abs(n), THIRD) * Math.Sign(n);
+        // n^(1/3) - work around a negative double raised to (1/3)
+        public double CubeRoot(double n) => Math.Pow(Math.Abs(n), THIRD) * Math.Sign(n);
         // first approach
         //double CubeRoot(double number) => number < 0 ? -Math.Pow(-number, THIRD) : Math.Pow(number, THIRD);
     }
