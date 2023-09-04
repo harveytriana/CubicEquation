@@ -27,9 +27,9 @@ namespace CubicEquation
                 B = b,
                 C = c,
                 D = d,
-                R1 = new SimplyComplex { R = r1.Real, I = r1.Imaginary },
-                R2 = new SimplyComplex { R = r2.Real, I = r2.Imaginary },
-                R3 = new SimplyComplex { R = r3.Real, I = r3.Imaginary },
+                R1 = new BasicComplex { R = r1.Real, I = r1.Imaginary },
+                R2 = new BasicComplex { R = r2.Real, I = r2.Imaginary },
+                R3 = new BasicComplex { R = r3.Real, I = r3.Imaginary },
             };
             if(samples.FirstOrDefault(x => x.A == a && x.B == b && x.C == c && x.D == d) == null) {
                 samples.Add(s);
@@ -44,13 +44,15 @@ namespace CubicEquation
         public double B { get; set; }
         public double C { get; set; }
         public double D { get; set; }
-        public SimplyComplex R1 { get; set; }
-        public SimplyComplex R2 { get; set; }
-        public SimplyComplex R3 { get; set; }
+        public BasicComplex R1 { get; set; }
+        public BasicComplex R2 { get; set; }
+        public BasicComplex R3 { get; set; }
         public bool Solved { get; set; } = true;
         public string Comment { get; set; }
     }
-    public class SimplyComplex
+    // Summary
+    // Round for fix numbers as -0.49999999999999684, where is -0.5
+    public class BasicComplex
     {
         double real;
         public double R {
