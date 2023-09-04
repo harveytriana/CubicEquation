@@ -36,15 +36,14 @@ namespace CubicEquation
 
             // There are three cases according to the value of t
             if(t > 0) {// one real, two complexs
+                var q1 = CubeRoot(-q / 2.0 + Math.Sqrt(t));
+                var q2 = CubeRoot(-q / 2.0 - Math.Sqrt(t));
                 // real root
-                r1 = CubeRoot(-q / 2.0 + Math.Sqrt(t))
-                   + CubeRoot(-q / 2.0 - Math.Sqrt(t));
+                r1 = q1 + q2;
                 // two complex roots
                 r2 = -r1 / 2.0;
                 r3 = r2; // conjugated
                 // imaginary
-                var q1 = CubeRoot(-q / 2.0 + Math.Sqrt(t));
-                var q2 = CubeRoot(-q / 2.0 - Math.Sqrt(t));
                 i = Math.Sqrt(3.0) / 2.0 * (q1 - q2);
                 i1 = 0;
                 i2 = i;
