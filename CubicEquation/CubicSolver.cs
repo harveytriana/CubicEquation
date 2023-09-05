@@ -9,7 +9,9 @@ namespace CubicEquation
 {
     public class CubicSolver
     {
-        const double CLOSETOZERO = 1.0E-8, THIRD = 1.0 / 3.0;
+        const double CLOSE_TO_ZERO = 1.0E-8, THIRD = 1.0 / 3.0;
+
+        bool CloseToZero(double value) => Math.Abs(value) <= CLOSE_TO_ZERO;
 
         public Complex[] Solve(double a, double b, double c, double d)
         {
@@ -25,10 +27,10 @@ namespace CubicEquation
             double t = q * q / 4.0 + p * p * p / 27.0;
 
             // force to zero if it is very close to zero
-            if(Math.Abs(t) < CLOSETOZERO) {
+            if(CloseToZero(t)) {
                 t = 0;
             }
-            if(Math.Abs(q) < CLOSETOZERO) {
+            if(CloseToZero(q)) {
                 q = 0;
             }
 
