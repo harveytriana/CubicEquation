@@ -2,11 +2,6 @@
 // Harvey Triana / Visionary-SAS
 // Cardano´s method
 // ==============================
-
-//! ¡falló un caso! -1, 3, -4, 2 => R[]: 1, 1 + i, 1 - i
-//
-//! https://www.calculatorsoup.com/calculators/algebra/cubicequation.php
-
 using System;
 using System.Linq;
 using System.Numerics;
@@ -61,7 +56,9 @@ namespace CubicEquation
                 X2 = ComplexString(_roots[1]);
                 X3 = ComplexString(_roots[2]);
                 //
-                manageSamples.SaveSample(A, B, C, D, _roots[0], _roots[1], _roots[2]);
+                if(checkBoxSave.Checked) {
+                    manageSamples.SaveSample(A, B, C, D, _roots[0], _roots[1], _roots[2]);
+                }
             }
             else {
                 X1 = "null";

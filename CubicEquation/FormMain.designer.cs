@@ -48,6 +48,7 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonExecute = new System.Windows.Forms.Button();
             this.buttonValidate = new System.Windows.Forms.Button();
+            this.checkBoxSave = new System.Windows.Forms.CheckBox();
             this.groupBoxInput.SuspendLayout();
             this.groupBoxOutput.SuspendLayout();
             this.SuspendLayout();
@@ -145,7 +146,7 @@
             this.groupBoxOutput.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOutput.Location = new System.Drawing.Point(247, 92);
             this.groupBoxOutput.Name = "groupBoxOutput";
-            this.groupBoxOutput.Size = new System.Drawing.Size(209, 136);
+            this.groupBoxOutput.Size = new System.Drawing.Size(209, 106);
             this.groupBoxOutput.TabIndex = 1;
             this.groupBoxOutput.TabStop = false;
             this.groupBoxOutput.Text = "Output";
@@ -237,11 +238,25 @@
             this.buttonValidate.Text = "Validate";
             this.buttonValidate.UseVisualStyleBackColor = true;
             // 
+            // checkBoxSave
+            // 
+            this.checkBoxSave.AutoSize = true;
+            this.checkBoxSave.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.checkBoxSave.Checked = true;
+            this.checkBoxSave.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxSave.Location = new System.Drawing.Point(364, 211);
+            this.checkBoxSave.Name = "checkBoxSave";
+            this.checkBoxSave.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxSave.TabIndex = 12;
+            this.checkBoxSave.Text = "Remember";
+            this.checkBoxSave.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 281);
+            this.Controls.Add(this.checkBoxSave);
             this.Controls.Add(this.buttonValidate);
             this.Controls.Add(this.buttonExecute);
             this.Controls.Add(this.labelTitle);
@@ -257,6 +272,7 @@
             this.groupBoxOutput.ResumeLayout(false);
             this.groupBoxOutput.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -282,6 +298,7 @@
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Button buttonExecute;
         private System.Windows.Forms.Button buttonValidate;
+        private System.Windows.Forms.CheckBox checkBoxSave;
     }
 }
 
