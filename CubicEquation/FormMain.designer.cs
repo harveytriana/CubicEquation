@@ -244,7 +244,7 @@
             this.checkBoxSave.CheckAlign = System.Drawing.ContentAlignment.BottomRight;
             this.checkBoxSave.Checked = true;
             this.checkBoxSave.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSave.Location = new System.Drawing.Point(364, 211);
+            this.checkBoxSave.Location = new System.Drawing.Point(379, 211);
             this.checkBoxSave.Name = "checkBoxSave";
             this.checkBoxSave.Size = new System.Drawing.Size(77, 17);
             this.checkBoxSave.TabIndex = 12;
