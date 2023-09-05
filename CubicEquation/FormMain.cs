@@ -119,10 +119,10 @@ namespace CubicEquation
                 return z.Real.ToString(s);
             }
             if(z.Real == 0) {
-                return z.Imaginary.ToString(s) + "i";
+                return z.Imaginary.ToString(s) + " i";
             }
             return (z.Real == 0 ? "" : z.Real.ToString(s)) +
-                   (z.Imaginary >= 0 ? " + " : " - ") + Math.Abs(z.Imaginary).ToString(s) + "i";
+                   (z.Imaginary >= 0 ? " + " : " - ") + Math.Abs(z.Imaginary).ToString(s) + " i";
         }
 
         void ValidateResult()

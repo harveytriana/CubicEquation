@@ -65,7 +65,7 @@ namespace CubicEquation
                 r2 = 2.0 * Math.Sqrt(-p / 3.0) * Math.Cos((angle + 2.0 * Math.PI) / 3.0);
                 r3 = 2.0 * Math.Sqrt(-p / 3.0) * Math.Cos((angle + 4.0 * Math.PI) / 3.0);
             }
-            // output
+            // output 
             var result = new Complex[3];
             result[0] = new Complex(r1 - j / 3.0, i1);
             result[1] = new Complex(r2 - j / 3.0, i2);
