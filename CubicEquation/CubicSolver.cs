@@ -11,8 +11,6 @@ namespace CubicEquation
     {
         const double CLOSE_TO_ZERO = 1.0E-8, THIRD = 1.0 / 3.0;
 
-        bool CloseToZero(double value) => Math.Abs(value) <= CLOSE_TO_ZERO;
-
         public Complex[] Solve(double a, double b, double c, double d)
         {
             if(a == 0) {
@@ -56,7 +54,7 @@ namespace CubicEquation
                 r2 = -r1 / 2.0 + Math.Sqrt(Math.Pow(r1 / 2.0, 2.0) + q / r1);
                 r3 = -r1 / 2.0 - Math.Sqrt(Math.Pow(r1 / 2.0, 2.0) + q / r1);
             }
-            if(t < 0) {// three real roots
+            if(t < 0) {// all are real roots
                 var x = -q / 2.0;
                 var y = Math.Sqrt(-t); // make t positive
                 var angle = Math.Atan(y / x);
@@ -80,5 +78,9 @@ namespace CubicEquation
         public double CubeRoot(double n) => Math.Pow(Math.Abs(n), THIRD) * Math.Sign(n);
         // first approach
         //double CubeRoot(double number) => number < 0 ? -Math.Pow(-number, THIRD) : Math.Pow(number, THIRD);
+
+        // Summary
+        // In computational terms, it validates if a number is very close to zero.
+        bool CloseToZero(double value) => Math.Abs(value) <= CLOSE_TO_ZERO;
     }
 }
