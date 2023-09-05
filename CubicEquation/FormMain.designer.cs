@@ -200,11 +200,11 @@
             // 
             // labelEquation
             // 
-            this.labelEquation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEquation.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEquation.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.labelEquation.Location = new System.Drawing.Point(25, 60);
             this.labelEquation.Name = "labelEquation";
-            this.labelEquation.Size = new System.Drawing.Size(489, 29);
+            this.labelEquation.Size = new System.Drawing.Size(431, 29);
             this.labelEquation.TabIndex = 6;
             this.labelEquation.Text = "ax^3 + bx^2 + cx + d = 0";
             // 
@@ -224,7 +224,7 @@
             this.buttonExecute.Name = "buttonExecute";
             this.buttonExecute.Size = new System.Drawing.Size(200, 25);
             this.buttonExecute.TabIndex = 10;
-            this.buttonExecute.Text = "Calc";
+            this.buttonExecute.Text = "Calculate";
             this.buttonExecute.UseVisualStyleBackColor = true;
             // 
             // buttonValidate

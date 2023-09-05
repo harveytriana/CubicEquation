@@ -132,11 +132,11 @@ namespace CubicEquation
             var b = B;
             var c = C;
             var d = D;
-            s += "Is ƒ(x) equals to zero?";
+            s += "Is ƒ(x) equals to zero?\n";
             s += $"\nƒ({X1}) = {Test(a, b, c, d, _roots[0])}";
             s += $"\nƒ({X2}) = {Test(a, b, c, d, _roots[1])}";
             s += $"\nƒ({X3}) = {Test(a, b, c, d, _roots[2])}";
-            MessageBox.Show(s);
+            MessageBox.Show(s, "Validation");
         }
 
         /// <summary>
